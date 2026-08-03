@@ -1,6 +1,5 @@
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel, Field
-
 from app.services import llm
 
 app = FastAPI(title="AI Doc Assistant")
@@ -13,6 +12,10 @@ class ChatRequest(BaseModel):
 class ChatResponse(BaseModel):
     answer: str
 
+
+@app.get("/")
+async def home():
+    return {"status":"ok"}
 
 @app.get("/api/health")
 async def health():
@@ -29,3 +32,6 @@ async def chat(request: ChatRequest):
         raise HTTPException(status_code=502, detail="LLM request failed") from exc
     return ChatResponse(answer=answer)
 
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run(app, host="127.0.0.1", port=8000)

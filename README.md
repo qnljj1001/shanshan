@@ -159,6 +159,37 @@ API 文档：http://127.0.0.1:8000/docs
 
 ---
 
+## 当前进度（截至 2026-08-03）
+
+V0.1 后端代码已完成，PyCharm + conda `fastapi-demo` + GitHub 推送链路跑通。
+
+已实现：
+
+- `/`、`/api/health`、`/api/chat`（POST，body `{message}`，返回 `{answer}`）
+- `backend/app/services/llm.py` 单例 OpenAI 兼容客户端（懒加载、自动补 `/v1`、配置校验）
+- `.env` / `.env.example` / `.gitignore`（`.env` 和 IDE 配置已屏蔽）
+- README + 11 个 docs 全部中文化；5 个文档已适配 conda `fastapi-demo`
+- git 仓库根在 `ai-doc-assistant/`，3 个 commit，GitHub 远端通过 PyCharm + PAT 推送成功
+
+下一步：`docs/行动路径.md` 第 3 天的流式输出 `/api/chat/stream`。
+
+详细总结见 [`docs/2026-08-03-文档修订说明.md`](docs/2026-08-03-文档修订说明.md)。
+
+---
+
+## 开发日志
+
+### 2026-08-03
+
+- **环境定型**：PyCharm + conda `fastapi-demo`（Python 3.13） + Git for Windows，不用 WSL。
+- **代码**：`backend/app/main.py` 实现 `/`、`/api/health`、`/api/chat`；`backend/app/services/llm.py` 封装 OpenAI 兼容客户端；`backend/requirements.txt` 锁定依赖。
+- **配置**：`backend/.env` 已填 OPENAI_BASE_URL / OPENAI_API_KEY / MODEL_NAME，未提交。
+- **文档**：11 个 `docs/*.md` 全部中文化；`README.md`、`开发指南.md`、`行动路径.md`、`第一阶段接口实现说明.md`、`部署指南.md` 适配 conda + PyCharm；新增 `docs/2026-08-03-文档修订说明.md`。
+- **Git**：仓库根迁回 `ai-doc-assistant/`；清理 8 个错跟踪文件（`.workbuddy-ai/`、`.idea/`、`test_main.http`、私人 txt）；3 个 commit；通过 PyCharm + PAT 推送至 GitHub。
+- **commit**：`96fa734 初始化 --v0.1` / `802247c 第一阶段第一次提交` / `7e5edaa 第一阶段第一次提交`。
+
+---
+
 ## 文档索引
 
 - [产品需求](docs/产品需求文档.md)
@@ -172,3 +203,4 @@ API 文档：http://127.0.0.1:8000/docs
 - [RAG 评估](docs/RAG 评估文档.md)
 - [部署指南](docs/部署指南.md)
 - [面试材料](docs/面试材料.md)
+- [2026-08-03 进度与文档修订说明](docs/2026-08-03-文档修订说明.md)
