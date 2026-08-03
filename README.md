@@ -98,11 +98,57 @@ ai-doc-assistant/
 
 ---
 
+## 快速启动（V0.1 后端）
+
+在 `backend/` 目录下配置 `.env`（可参考项目根目录的 `.env.example`），至少需要：
+
+```text
+OPENAI_BASE_URL
+OPENAI_API_KEY
+MODEL_NAME
+```
+
+安装依赖并启动（Conda）：
+
+```bash
+# 首次创建环境（只需一次，环境名可自定义）
+conda create -n fastapi-demo python=3.11 -y
+
+# 激活你用于本项目的 Conda 环境
+conda activate fastapi-demo   # 或 ai-doc-assistant、llm312 等你已有的环境
+
+cd backend
+pip install -r requirements.txt
+uvicorn app.main:app --reload --port 8000
+```
+
+日常开发时，激活环境后直接启动：
+
+```bash
+conda activate fastapi-demo   # 换成你的环境名
+cd backend
+uvicorn app.main:app --reload --port 8000
+```
+
+测试：
+
+```bash
+curl http://127.0.0.1:8000/api/health
+
+curl -X POST http://127.0.0.1:8000/api/chat \
+  -H "Content-Type: application/json" \
+  -d "{\"message\":\"请用一句话解释 RAG\"}"
+```
+
+API 文档：http://127.0.0.1:8000/docs
+
+---
+
 ## 当前第一步
 
 先不要写 Docker。
 
-第一步先在 WSL Ubuntu 中跑通：
+第一步在 PyCharm 中跑通（Python Interpreter 选 `fastapi-demo`）：
 
 1. FastAPI 后端。
 2. OpenAI 兼容接口调用。
