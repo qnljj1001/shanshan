@@ -28,3 +28,4 @@ async def chat(request: ChatRequest):
     except Exception as exc:
         raise HTTPException(status_code=502, detail="LLM request failed") from exc
     return ChatResponse(answer=answer)
+

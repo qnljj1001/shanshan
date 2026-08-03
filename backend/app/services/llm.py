@@ -45,3 +45,4 @@ def chat(message: str) -> str:
     if not content:
         raise RuntimeError("Model returned an empty response")
     return content
+
