@@ -186,7 +186,9 @@ V0.1 后端代码已完成，PyCharm + conda `fastapi-demo` + GitHub 推送链�
 - **配置**：`backend/.env` 已填 OPENAI_BASE_URL / OPENAI_API_KEY / MODEL_NAME，未提交。
 - **文档**：11 个 `docs/*.md` 全部中文化；`README.md`、`开发指南.md`、`行动路径.md`、`第一阶段接口实现说明.md`、`部署指南.md` 适配 conda + PyCharm；新增 `docs/2026-08-03-文档修订说明.md`。
 - **Git**：仓库根迁回 `ai-doc-assistant/`；清理 8 个错跟踪文件（`.workbuddy-ai/`、`.idea/`、`test_main.http`、私人 txt）；3 个 commit；通过 PyCharm + PAT 推送至 GitHub。
-- **commit**：`96fa734 初始化 --v0.1` / `802247c 第一阶段第一次提交` / `7e5edaa 第一阶段第一次提交`。
+- **commit**：`96fa734 初始化 --v0.1` / `802247c 第一阶段第一次提交` / `7e5edaa 第一阶段第一次提交` / `16b2224 文档更新`。
+- **V0.1 收尾**：本地实跑 `uvicorn app.main:app` 通过，`curl /api/health` 与 `curl /api/chat` 返回模型回答正确。`backend/app/main.py` 改动已 commit 并 push 至 GitHub。`docs/行动路径.md` "明天"段全部勾选 ✅，V0.1 后端聊天接口完成。
+- **下一步**：进入"第 3 天"——实现 `/api/chat/stream` 流式输出。
 
 ---
 
