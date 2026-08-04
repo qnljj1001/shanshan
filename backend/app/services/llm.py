@@ -46,3 +46,17 @@ def chat(message: str) -> str:
         raise RuntimeError("Model returned an empty response")
     return content
 
+
+def chat_stream(message: str):
+    """Stream chat completions, yielding delta text chunks."""
+    client = _get_client()
+    stream = client.chat.completions.create(
+        model=get_model_name(),
+        messages=[{"role": "user", "content": message}],
+        stream=True,
+    )
+    for chunk in stream:
+        delta = chunk.choices[0].delta
+        if delta.content:
+            yield delta.content
+
